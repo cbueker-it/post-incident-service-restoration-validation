@@ -2,7 +2,9 @@
 
 Post-incident validation of home Internet service restoration following a storm-related power outage using provider notifications and Debian network diagnostics.
 
-On July 27, 2026, severe weather caused a local power outage and an associated Spectrum Internet-service interruption in Milford, Ohio. Spectrum reported the interruption beginning at 7:39 PM and issued a restoration notification at 10:37 PM. The following morning, I performed structured post-incident validation from a Debian Linux workstation to confirm that local networking, Internet connectivity, DNS resolution, and HTTPS service access had recovered successfully.
+On July 27, 2026, loud thunderstorms moved through the Milford, Ohio area while my wife and I were at home. At the time, I was working on a website and preparing for the decommissioning of ChristopherBueker.com. The severe weather caused a power outage and an associated Spectrum Internet service interruption in our home. Spectrum reported that the interruption began at 7:39 PM, and I received the service-restoration notification at 10:37 PM.
+
+The following morning, I conducted a structured post-incident validation from my Debian Linux workstation. I worked to confirm that local network connectivity, Internet access, DNS resolution, and HTTPS service access had recovered successfully. I documented my actions, evidence, findings, and conclusions in this repository.
 
 **Provider Outage Notification**
 
