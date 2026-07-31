@@ -6,95 +6,89 @@ On July 27, 2026, loud thunderstorms moved through the Milford, Ohio area while 
 
 The following morning, I conducted a structured post-incident validation from my Debian Linux workstation. I worked to confirm that local network connectivity, Internet access, DNS resolution, and HTTPS service access had recovered successfully. I documented my actions, evidence, findings, and conclusions in this repository.
 
+**Objective**
+
+- Review the provider outage and restoration notifications.
+- Validate that the Debian workstation reconnected to the local network.
+- Confirm that local routing, Internet connectivity, DNS resolution, and HTTPS access were working after service restoration.
+
 **Provider Outage Notification**
 
 - Reviewed the Spectrum outage notification received on July 27, 2026.
 - Confirmed that Spectrum attributed the Internet service interruption to a local power outage.
 - Recorded the reported outage start time of 7:39 PM.
-- Recorded that Internet service was affected.
 - Recorded the estimated restoration time of 10:45 PM.
-- Preserved and sanitized the provider notification as supporting incident evidence.
 
 <img src="images/01-provider-outage-notification.png" alt="Spectrum power outage and Internet service interruption notification" width="700"/>
 
-**Provider Restoration Notification**
+**Service Restoration Notification**
 
 - Reviewed the Spectrum service restoration notification.
 - Recorded that the restoration notification was received at 10:37 PM on July 27, 2026.
 - Confirmed that Spectrum reported Internet service as restored.
 - Noted that intermittent issues could continue while additional restoration work was completed.
-- Preserved and sanitized the restoration notification as supporting recovery evidence.
 
 <img src="images/02-provider-restoration.png" alt="Spectrum Internet service restoration notification" width="700"/>
 
 **System and Interface Validation**
 
-- Recorded the workstation date and time to establish when post-incident validation was performed.
-- Checked system uptime to determine how long the Debian workstation had been operating after power restoration.
-- Used NetworkManager to review network-device state.
-- Confirmed that the wireless interface was connected.
-- Reviewed interface addressing and confirmed that the workstation had received a valid private IPv4 address.
-- Sanitized the workstation username, hostname, and IPv6 addressing before publication.
-
+- Recorded the workstation date, time, and uptime after power and Internet service were restored.
 - `9:37`: The workstation had been running for 9 hours and 37 minutes.
-- `wlp0s20f3`: The workstation’s Wi-Fi adapter.
-- `wifi`: Device type - Identified as a wireless connection.
-- `connected`: The Wi-Fi connection was active.
-- `UP`: Interface state - The adapter was enabled and working.
-- `192.168.1.x/24`: Private IPv4 address - A valid address on the local network.
+- `wlp0s20f3`, `wifi`, `connected`, and `UP`: The Wi-Fi adapter was enabled and connected.
+- `192.168.1.x/24`: The workstation had a valid private address on the local network.
+- Sanitized the username, hostname, and IPv6 addressing before publication.
 
-- The Debian workstation was running normally when the validation began.
-- Its wireless adapter was enabled, connected, and assigned a valid local-network address.
-- The system had successfully rejoined the home network after the power and Internet interruption.
+- The Debian workstation was operating normally.
+- The wireless connection was active.
+- The system had successfully rejoined the local network.
 
 <img src="images/03-system-interface.png" alt="Debian system uptime, wireless interface, and IP address validation" width="700"/>
 
 **Routing and Network Connectivity Validation**
 
-- Reviewed the workstation routing table.
-- Confirmed that a valid default route existed through the local network gateway.
-- Tested connectivity to the local gateway using ICMP echo requests.
-- Confirmed successful local gateway communication with zero packet loss.
-- Tested external Internet connectivity using the public IP address 1.1.1.1.
-- Confirmed successful external connectivity with zero packet loss.
-- Compared local and external response times as part of the recovery validation.
+- Reviewed the routing table and tested both local and external connectivity.
+- `192.168.1.1` through `wlp0s20f3`: Internet traffic was routed through the local gateway over Wi-Fi.
+- `192.168.1.0/24`: The workstation was connected to the expected local network.
+- `4 received, 0% packet loss`: The local gateway responded to every test packet.
+- `1.1.1.1` with `4 received, 0% packet loss`: Public Internet connectivity was working.
+- `time=... ms`: The response times showed how long each packet took to reach the destination and return.
 
-- `192.168.1.1`: Default gateway - The local router used to reach the Internet.
-- `wlp0s20f3`: Wireless interface - Network traffic used the Wi-Fi adapter.
-- `192.168.1.0/24`: Local network - The workstation’s local network range.
-- `4 received, 0% packet loss`: Gateway ping - The router responded successfully.
-- `1.1.1.1`: External address - Used to test public Internet access.
-- `4 received, 0% packet loss`: External ping - Internet connectivity was working.
-- `time=... ms`: Response time - The round-trip time in milliseconds.
-
-- The workstation could successfully reach the local router with no packet loss.
-- It could also reach a public Internet address without relying on DNS.
-- Together, these results confirmed that local routing and external Internet connectivity had recovered.
+- The workstation could reach the local router.
+- It could also reach the public Internet without relying on DNS.
+- No packet loss was detected during either test.
 
 <img src="images/04-network-connectivity.png" alt="Default route, local gateway, and external Internet connectivity validation" width="700"/>
 
 **DNS and HTTPS Validation**
 
-- Queried the SunPath SEO domain using the dig DNS utility.
-- Confirmed that the DNS query completed successfully with a NOERROR response.
-- Confirmed that two IPv4 address records were returned.
-- Verified that the DNS request was processed through the local network gateway.
-- Tested HTTPS availability using curl.
-- Confirmed that the website returned an HTTP 301 permanent redirect.
-- Confirmed that the redirect pointed to the expected www version of the domain.
-- Confirmed that Cloudflare responded as the public-facing web service.
+- Used `dig` to test DNS resolution and `curl` to test HTTPS website access.
+- `NOERROR` and `ANSWER: 2`: The DNS request succeeded and returned two records.
+- `A`: The returned records contained public IPv4 addresses for the domain.
+- The DNS request was processed through the local network gateway.
+- `HTTP/2 301`: The website returned a permanent redirect.
+- `location` and `server: cloudflare`: The request was redirected to the expected `www` address through Cloudflare.
 
-- `NOERROR`: DNS status - The DNS request completed successfully.
-- `ANSWER: 2`: Count - Two DNS records were returned.
-- `A`: Record type - The domain resolved to IPv4 addresses.
-- `HTTP/2 301`: HTTP status - The website returned a permanent redirect.
-- `Redirect location`: The request was sent to the expected www address.
-- `cloudflare`: Server - Cloudflare responded to the web request.
-
-- The workstation could successfully submit a DNS request through the local network.
-- The domain name resolved into valid public IPv4 addresses.
-- The workstation successfully established an HTTPS connection to the public website.
-- The website returned the expected permanent redirect rather than an error or timeout.
-- Cloudflare responded successfully, confirming that public web access had recovered.
+- DNS resolution was working correctly.
+- The website responded without an error or timeout.
+- The results confirmed that public web access had recovered.
 
 <img src="images/05-dns-https.png" alt="DNS resolution and HTTPS response validation for SunPath SEO" width="700"/>
+
+**Skills Demonstrated**
+
+- Linux network interface and IP address validation
+- Routing table and default gateway review
+- Local and external connectivity testing with `ping`
+- DNS resolution testing with `dig`
+- HTTPS response testing with `curl`
+- Post-incident validation and technical documentation
+- Evidence sanitization for public documentation
+
+**Summary**
+
+The post-incident checks confirmed that the Debian workstation had reconnected to the local network and received a valid private IP address. The workstation successfully reached the local gateway and the public Internet with no packet loss. DNS resolution and HTTPS access also worked correctly, confirming that Internet service had recovered after the power outage.
+
+Navigation
+
+[`Back to GitHub Profile`](https://www.github.com/cbueker-it)
+
