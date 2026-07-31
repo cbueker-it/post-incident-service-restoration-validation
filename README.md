@@ -4,7 +4,9 @@ Post-incident validation of home Internet service restoration following a storm-
 
 On July 27, 2026, loud thunderstorms moved through the Milford, Ohio area while my wife and I were at home. At the time, I was working on a website and preparing for the decommissioning of my original website. The severe weather caused a power outage and an associated Spectrum Internet service interruption in our home. Spectrum reported that the interruption began at 7:39 PM, and I received the service-restoration notification at 10:37 PM.
 
-The following morning, I conducted a structured post-incident validation from my Debian Linux workstation. I worked to confirm that local network connectivity, Internet access, DNS resolution, and HTTPS service access had recovered successfully. I documented my actions, evidence, findings, and conclusions in this repository.
+The following morning, I conducted a structured post-incident validation from my Debian Linux workstation. In a business environment, restoring a service is only part of the recovery process. IT teams also need to verify that the fix worked, confirm that affected systems are operating normally, and identify any remaining impact before the incident can be considered resolved. I documented this real home-network event as a lab to demonstrate that same validation process on a smaller scale.
+
+I then worked to confirm that local network connectivity, Internet access, DNS resolution, and HTTPS service access had recovered successfully. I documented my actions, evidence, findings, and conclusions in this repository.
 
 **Objective**
 
@@ -86,7 +88,9 @@ The following morning, I conducted a structured post-incident validation from my
 
 **Summary**
 
-The post-incident checks confirmed that the Debian workstation had reconnected to the local network and received a valid private IP address. The workstation successfully reached the local gateway and the public Internet with no packet loss. DNS resolution and HTTPS access also worked correctly, confirming that Internet service had recovered after the power outage.
+The checks I performed after the storm and after service was restored confirmed that my primary workstation, my Debian desktop, had reconnected to the local network and received a valid private IP address. My desktop successfully reached both the local gateway and the public Internet with no packet loss. DNS resolution and HTTPS access were also working correctly.
+
+Instead of relying only on Spectrum’s notification that service had been restored, I conducted my own research and worked to independently verify that the service was fully functional from my personal computer. In a business environment, this type of post-incident validation provides hard evidence that the impacted systems are back to operating as expected. It is also part of the process of communicating the fully recovered state to users and stakeholders and closing the incident or support ticket with confidence.
 
 Navigation
 
