@@ -36,12 +36,12 @@ The following morning, I conducted a structured post-incident validation from my
 - Reviewed interface addressing and confirmed that the workstation had received a valid private IPv4 address.
 - Sanitized the workstation username, hostname, and IPv6 addressing before publication.
 
-`9:37`: The workstation had been running for 9 hours and 37 minutes.
-`wlp0s20f3`: The workstation’s Wi-Fi adapter.
-`wifi`: Device type - Identified as a wireless connection.
-`connected`: The Wi-Fi connection was active.
-`UP`: Interface state - The adapter was enabled and working.
-`192.168.1.x/24`: Private IPv4 address - A valid address on the local network.
+- `9:37`: The workstation had been running for 9 hours and 37 minutes.
+- `wlp0s20f3`: The workstation’s Wi-Fi adapter.
+- `wifi`: Device type - Identified as a wireless connection.
+- `connected`: The Wi-Fi connection was active.
+- `UP`: Interface state - The adapter was enabled and working.
+- `192.168.1.x/24`: Private IPv4 address - A valid address on the local network.
 
 - The Debian workstation was running normally when the validation began.
 - Its wireless adapter was enabled, connected, and assigned a valid local-network address.
@@ -59,13 +59,13 @@ The following morning, I conducted a structured post-incident validation from my
 - Confirmed successful external connectivity with zero packet loss.
 - Compared local and external response times as part of the recovery validation.
 
-`192.168.1.1`: Default gateway - The local router used to reach the Internet.
-`wlp0s20f3`: Wireless interface - Network traffic used the Wi-Fi adapter.
-`192.168.1.0/24`: Local network - The workstation’s local network range.
-`4 received, 0% packet loss`: Gateway ping - The router responded successfully.
-`1.1.1.1`: External address - Used to test public Internet access.
-`4 received, 0% packet loss`: External ping - Internet connectivity was working.
-`time=... ms`: Response time - The round-trip time in milliseconds.
+- `192.168.1.1`: Default gateway - The local router used to reach the Internet.
+- `wlp0s20f3`: Wireless interface - Network traffic used the Wi-Fi adapter.
+- `192.168.1.0/24`: Local network - The workstation’s local network range.
+- `4 received, 0% packet loss`: Gateway ping - The router responded successfully.
+- `1.1.1.1`: External address - Used to test public Internet access.
+- `4 received, 0% packet loss`: External ping - Internet connectivity was working.
+- `time=... ms`: Response time - The round-trip time in milliseconds.
 
 - The workstation could successfully reach the local router with no packet loss.
 - It could also reach a public Internet address without relying on DNS.
@@ -84,12 +84,12 @@ The following morning, I conducted a structured post-incident validation from my
 - Confirmed that the redirect pointed to the expected www version of the domain.
 - Confirmed that Cloudflare responded as the public-facing web service.
 
-`NOERROR`: DNS status - The DNS request completed successfully.
-`ANSWER: 2`: Count - Two DNS records were returned.
-`A`: Record type - The domain resolved to IPv4 addresses.
-`HTTP/2 301`: HTTP status - The website returned a permanent redirect.
-`Redirect location`: The request was sent to the expected www address.
-`cloudflare`: Server - Cloudflare responded to the web request.
+- `NOERROR`: DNS status - The DNS request completed successfully.
+- `ANSWER: 2`: Count - Two DNS records were returned.
+- `A`: Record type - The domain resolved to IPv4 addresses.
+- `HTTP/2 301`: HTTP status - The website returned a permanent redirect.
+- `Redirect location`: The request was sent to the expected www address.
+- `cloudflare`: Server - Cloudflare responded to the web request.
 
 - The workstation could successfully submit a DNS request through the local network.
 - The domain name resolved into valid public IPv4 addresses.
