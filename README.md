@@ -90,7 +90,7 @@ I then worked to confirm that local network connectivity, Internet access, DNS r
 
 The checks I performed after the storm and after service was restored confirmed that my primary workstation, my Debian desktop, had reconnected to the local network and received a valid private IP address. My desktop successfully reached both the local gateway and the public Internet with no packet loss. DNS resolution and HTTPS access were also working correctly.
 
-Instead of relying only on Spectrum’s notification that service had been restored, I conducted my own research and worked to independently verify that the service was fully functional from my personal computer. In a business environment, this type of post-incident validation provides hard evidence that the impacted systems are back to operating as expected. It is also part of the process of communicating the fully recovered state to users and stakeholders and closing the incident or support ticket with confidence.
+Instead of relying only on Spectrum’s notification that service had been restored, I performed my own validation to independently confirm that the service was operational from my Debian workstation. In a business environment, this type of post-incident validation provides hard evidence that the impacted systems are back to operating as expected. It is also part of the process of communicating the recovered state to users and stakeholders and closing the incident or support ticket with confidence.
 
 Navigation
 
